@@ -1,0 +1,53 @@
+{
+	"rows": 1,
+	"columns": 1,
+	"figsize": "12,4",
+	"graphs": [{
+		"dx": 0,
+		"dy": 0,
+		"type": "bar",
+		"data": "data.json",
+		"title": "SPEC CPU 2K17",
+		"args": {
+			"edgecolor": "black",
+			"zorder": 3
+		},
+		"axis": {
+			"x": {
+				"label": "Benchmarks",
+				"ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+				"ticks_label": ["bc-0", "bc-12", "bc-3", "bc-5", "bfs-10", "bfs-14", "bfs-3", "bfs-8", "cc-13", "cc-14", "cc-5", "cc-6", "pr-10", "pr-14", "pr-3", "pr-5", "sssp-10", "sssp-14", "sssp-3", "sssp-5", "GEOMEAN"],
+				"args_labels": {"rotation": 45, "ha": "right"}
+			},
+			"y": {
+				"label": "Speedup",
+				"ticks": [0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25],
+				"max": 2.25,
+				"min": 0.5,
+				"grid": true
+			}
+		},
+		"legend": [{
+			"elems": [{
+					"color": "black",
+					"label": "berti"
+				},
+				{
+					"color": "lightcoral",
+					"label": "ip_stride"
+				},
+				{
+					"color": "cornflowerblue",
+					"label": "ipcp"
+				}
+			],
+			"args": {
+				"edgecolor": "black",
+				"fancybox": true,
+				"bbox_to_anchor": [0.65, 1.40],
+				"ncol": 3
+			}
+		}],
+		"order": ["berti", "ip_stride", "ipcp"]
+	}]
+}

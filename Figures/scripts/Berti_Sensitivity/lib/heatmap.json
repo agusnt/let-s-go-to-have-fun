@@ -1,0 +1,254 @@
+{
+    "rows": 4,
+    "columns": 2,
+    "figsize": "20,20",
+    "graphs": [ 
+        {
+            "dx": 0,
+            "dy": 0,
+            "type": "heatmap",
+            "data": "/Users/agus/Documents/Trabajo/Investigacion/Prefetchers/Filter/MICRO-HeatMap/data.json",
+            "title": "MPKI",
+            "size_x": 17,
+            "size_y": 17,
+            "cmap": "gray",
+            "args": {
+                "annot": true, 
+                "fmt": ".0f", 
+                "linecolor": "white",
+                "edgecolors": "black", 
+                "linewidths": 0.2
+            },
+            "axis": {
+                "x": {
+                    "label": "L2C Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"ha": "left"}
+                },
+                "y": {
+                    "label": "L1D Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"va": "bottom"}
+                }
+            }
+        },
+        {
+            "dx": 0,
+            "dy": 1,
+            "type": "heatmap",
+            "data": "/Users/agus/Documents/Trabajo/Investigacion/Prefetchers/Filter/MICRO-HeatMap/data.json",
+            "title": "MPKI",
+            "size_x": 17,
+            "size_y": 17,
+            "cmap": "gray",
+            "args": {
+                "annot": true, 
+                "fmt": ".0f", 
+                "linecolor": "white",
+                "edgecolors": "black", 
+                "linewidths": 0.2
+            },
+            "axis": {
+                "x": {
+                    "label": "L2C Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"ha": "left"}
+                },
+                "y": {
+                    "label": "L1D Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"va": "bottom"}
+                }
+            }
+        },
+        {
+            "dx": 1,
+            "dy": 0,
+            "type": "heatmap",
+            "data": "/Users/agus/Documents/Trabajo/Investigacion/Prefetchers/Filter/MICRO-HeatMap/data.json",
+            "title": "MPKI",
+            "size_x": 17,
+            "size_y": 17,
+            "cmap": "gray",
+            "args": {
+                "annot": true, 
+                "fmt": ".0f", 
+                "linecolor": "white",
+                "edgecolors": "black", 
+                "linewidths": 0.2
+            },
+            "axis": {
+                "x": {
+                    "label": "L2C Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"ha": "left"}
+                },
+                "y": {
+                    "label": "L1D Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"va": "bottom"}
+                }
+            }
+        },
+        {
+            "dx": 1,
+            "dy": 1,
+            "type": "heatmap",
+            "data": "/Users/agus/Documents/Trabajo/Investigacion/Prefetchers/Filter/MICRO-HeatMap/data.json",
+            "title": "MPKI",
+            "size_x": 17,
+            "size_y": 17,
+            "cmap": "gray",
+            "args": {
+                "annot": true, 
+                "fmt": ".0f", 
+                "linecolor": "white",
+                "edgecolors": "black", 
+                "linewidths": 0.2
+            },
+            "axis": {
+                "x": {
+                    "label": "L2C Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"ha": "left"}
+                },
+                "y": {
+                    "label": "L1D Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"va": "bottom"}
+                }
+            }
+        },
+        {
+            "dx": 2,
+            "dy": 0,
+            "type": "heatmap",
+            "data": "/Users/agus/Documents/Trabajo/Investigacion/Prefetchers/Filter/MICRO-HeatMap/data.json",
+            "title": "MPKI",
+            "annot": true, 
+            "size_x": 17,
+            "size_y": 17,
+            "cmap": "gray",
+            "args": {
+                "annot": true, 
+                "fmt": ".1f", 
+                "linecolor": "white",
+                "edgecolors": "black", 
+                "linewidths": 0.2
+            },
+            "axis": {
+                "x": {
+                    "label": "L2C Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"ha": "left"}
+                },
+                "y": {
+                    "label": "L1D Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"va": "bottom"}
+                }
+            }
+        },
+        {
+            "dx": 2,
+            "dy": 1,
+            "type": "heatmap",
+            "data": "/Users/agus/Documents/Trabajo/Investigacion/Prefetchers/Filter/MICRO-HeatMap/data.json",
+            "title": "MPKI",
+            "annot": true, 
+            "size_x": 17,
+            "size_y": 17,
+            "cmap": "gray",
+            "args": {
+                "annot": true, 
+                "fmt": ".1f", 
+                "linecolor": "white",
+                "edgecolors": "black", 
+                "linewidths": 0.2
+            },
+            "axis": {
+                "x": {
+                    "label": "L2C Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"ha": "left"}
+                },
+                "y": {
+                    "label": "L1D Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"va": "bottom"}
+                }
+            }
+        },
+        {
+            "dx": 3,
+            "dy": 0,
+            "type": "heatmap",
+            "data": "/Users/agus/Documents/Trabajo/Investigacion/Prefetchers/Filter/MICRO-HeatMap/data.json",
+            "title": "MPKI",
+            "size_x": 17,
+            "size_y": 17,
+            "cmap": "gray",
+            "args": {
+                "annot": true, 
+                "fmt": ".2f", 
+                "linecolor": "white",
+                "edgecolors": "black", 
+                "linewidths": 0.2
+            },
+            "axis": {
+                "x": {
+                    "label": "L2C Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"ha": "left"}
+                },
+                "y": {
+                    "label": "L1D Confidence",
+                    "ticks_label": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "ticks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "max": 17,
+                    "min": 0,
+                    "args_labels": {"va": "bottom"}
+                }
+            }
+        }
+    ]
+}

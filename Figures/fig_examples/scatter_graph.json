@@ -1,0 +1,23 @@
+{
+    "rows": 1,
+    "columns": 1,
+    "figsize": "50,30",
+    "graphs": [ 
+        {
+            "dx": 0,
+            "dy": 0,
+            "type": "scatter",
+            "data": "data.json",
+            "title": "IP: 0x33E",
+            "annot": true, 
+            "axis": {
+                "x": {
+                    "label": "Cycles"
+                },
+                "y": {
+                    "label": "Address"
+                }
+            }
+        }
+    ]
+}

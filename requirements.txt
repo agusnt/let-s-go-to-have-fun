@@ -1,0 +1,9 @@
+# List of packages
+numpy
+ppt
+matplotlib
+scipy
+seaborn
+xlsxwriter
+gspread
+pymongo
