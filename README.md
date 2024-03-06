@@ -21,3 +21,6 @@ So breaking stuff is expected.
 My recommendation is using a [virtual environment](https://docs.python.org/3/library/venv.html)
 and install all the dependencies with `pip install -r requirements.txt`
 
+## TODO
+
+* Define an official way to communicate `get_info.py` and the `parser.py`.
