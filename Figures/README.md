@@ -102,6 +102,7 @@ The data file has the following format:
         "value": , # Value (used also for the label)
         "color": # Point color; array if stacked bar
         "marker": # Marker or Hatch; array if stacked var
+        "legend": # Bool; True if we have to include this value into the legend, optional
     }
 ]
 ```

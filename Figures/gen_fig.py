@@ -58,6 +58,7 @@ def data_to_array(fname):
         v : array with values
         c : array with colors 
         m : array with marks
+        l : array for use as legend
     '''
     x = []
     y = []
@@ -65,6 +66,7 @@ def data_to_array(fname):
     c = []
     m = []
     mc = []
+    l = []
 
     data = read_json(fname)
     
@@ -75,8 +77,10 @@ def data_to_array(fname):
         if 'color' in i: c.append(i['color'])
         if 'marker' in i: m.append(i['marker'])
         if 'edge_color' in i: mc.append(i['edge_color'])
+        if 'legend' in i: l.append(i['legend'])
+        else: l.append(True)
 
-    return x, y, v, c, m, mc
+    return x, y, v, c, m, mc, l
 
 def array_to_np(x, y, v, s):
     '''
@@ -233,7 +237,7 @@ def fig_heatmap(ax, jgraph):
         jgraph : json with all the information for this graph
     '''
     # Get the data
-    x, y, v, _, _, _ = data_to_array(jgraph['data'])
+    x, y, v, _, _, _, _ = data_to_array(jgraph['data'])
     matrix = array_to_np(x, y, v, (jgraph['size_x'], jgraph['size_y']))
     # Remove 0
     matrix[matrix == 0] = np.nan
@@ -258,7 +262,7 @@ def fig_plot(ax, jgraph):
         jgraph : json with all the information for this graph
     '''
     # Get the data
-    x, y, v, c, m, _ = data_to_array(jgraph['data'])
+    x, y, v, c, m, _, l = data_to_array(jgraph['data'])
     
     # X and Y must be equal
     assert len(x) == len(y), "X and Y has different size"
@@ -271,8 +275,9 @@ def fig_plot(ax, jgraph):
     #Args
     args = jgraph['args'] if 'args' in jgraph else {}
 
-    # Plot the figure
-    ax.plot(x, y, c=c[0], marker=m[0], **args, label=v)
+    # Plot the figure with labels
+    if all(l): ax.plot(x, y, c=c[0], marker=m[0], **args, label=v)
+    else: ax.plot(x, y, c=c[0], marker=m[0], **args) # Wihbout labels
 
 def fig_scatter(ax, jgraph):
     '''
@@ -284,7 +289,7 @@ def fig_scatter(ax, jgraph):
         jgraph : json with all the information for this graph
     '''
     # Get the data
-    x, y, v, c, m, _ = data_to_array(jgraph['data'])
+    x, y, v, c, m, _, l = data_to_array(jgraph['data'])
     
     # X and Y must be equal
     assert len(x) == len(y), "X and Y has different size"
@@ -298,12 +303,13 @@ def fig_scatter(ax, jgraph):
     args = jgraph['args'] if 'args' in jgraph else {}
 
     # Plot the figure
-    for i, j, k, l, n in zip(x, y, c, m, v):
+    for i, j, k, o, n, q in zip(x, y, c, m, v, l):
         # This iteration is not the more optimal thing, but is easier for 
         # programming, since I can change the color/marker of each point
         # without making exception. TLDR: not optimal bc I made everything an 
         # exception.
-        ax.scatter(i, j, c=k, marker=l, label=n, **args)
+        if q: ax.scatter(i, j, c=k, marker=o, label=n, **args) # With label
+        else: ax.scatter(i, j, c=k, marker=o, **args) # Without label
 
 def fig_bar(ax, jgraph):
     '''
@@ -352,7 +358,7 @@ def fig_bar(ax, jgraph):
 
         return loc, size
     # Get the data
-    x, y, v, c, m, mc = data_to_array(jgraph['data'])
+    x, y, v, c, m, mc, l = data_to_array(jgraph['data'])
 
     # If y value is this is an stacked bar
     if type(y) == list: 
@@ -369,7 +375,7 @@ def fig_bar(ax, jgraph):
     args = jgraph['args'] if 'args' in jgraph else {}
 
     # Plot the figure
-    for dx, (i, j, k, l) in enumerate(zip(x, y, v, c)):
+    for dx, (i, j, k, n, q) in enumerate(zip(x, y, v, c, l)):
         if k not in loc: continue # Some bars maybe are not interesting
 
         if type(j) == list: 
@@ -390,7 +396,9 @@ def fig_bar(ax, jgraph):
             else: 
                 ec = mc[dx]
 
-        ax.bar(i + loc[k], j, color=l, width=size, hatch=m[dx], edgecolor=ec, bottom=b, **args, label=k)
+        # With and without label
+        if q: ax.bar(i + loc[k], j, color=n, width=size, hatch=m[dx], edgecolor=ec, bottom=b, **args, label=k)
+        else: ax.bar(i + loc[k], j, color=n, width=size, hatch=m[dx], edgecolor=ec, bottom=b, **args)
         # Border always black
         ax.bar(i + loc[k], j, color='none', width=size, edgecolor='black', bottom=b, zorder=99)
 
