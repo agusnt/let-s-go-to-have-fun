@@ -10,10 +10,12 @@ Parameters:
     2 : Output file
 '''
 
+import math 
+import matplotlib
+
 from pprint import pprint as ppt
 import matplotlib.patches as mpatches
 
-import matplotlib
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
@@ -403,25 +405,28 @@ def fig_bar(ax, jgraph):
         # Border always black
         ax.bar(i + loc[k], j, color='none', width=size, edgecolor='black', bottom=b, zorder=99)
 
-        if 'annotate' in jgraph and k in jgraph['annotate'] and maxj > jgraph['axis']['y']['max']: 
-            # Annotate for this bar if the value is bigger than x
-            dic_annotate = jgraph['annotate'][k]
+        if 'annotate' in jgraph and k in jgraph['annotate']:
+            decimals = jgraph['annotate'][k]['round']
+            maxj = math.floor(maxj * 10 ** (decimals))
+            if maxj > jgraph['axis']['y']['max']:
+                # Annotate for this bar if the value is bigger than x
+                dic_annotate = jgraph['annotate'][k]
 
-            # Get extra info
-            r = dic_annotate['round'] if 'round' in dic_annotate else 1
-            arg = dic_annotate['args'] if 'args' in dic_annotate else {}
+                # Get extra info
+                r = dic_annotate['round'] if 'round' in dic_annotate else 1
+                arg = dic_annotate['args'] if 'args' in dic_annotate else {}
 
-            # Relative position
-            xd = dic_annotate['x'] if 'x' in dic_annotate else 0
-            yd = dic_annotate['y'] if 'y' in dic_annotate else 0
+                # Relative position
+                xd = dic_annotate['x'] if 'x' in dic_annotate else 0
+                yd = dic_annotate['y'] if 'y' in dic_annotate else 0
 
-            # Position x and y, and value to write 
-            x = i + loc[k]
-            y = jgraph['axis']['y']['max']
-            if (r != 0): v = "{}".format(round(maxj, r))
-            else: v = "{}".format(int(maxj))
+                # Position x and y, and value to write 
+                x = i + loc[k]
+                y = jgraph['axis']['y']['max']
+                if (r != 0): v = "{}".format(round(maxj, r))
+                else: v = "{}".format(int(maxj))
 
-            annotate(ax, v, x, y, xd, yd, arg)
+                annotate(ax, v, x, y, xd, yd, arg)
     
 if __name__ == '__main__':
     
