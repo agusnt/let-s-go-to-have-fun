@@ -87,7 +87,9 @@ First parameter is the `json` file, second parameter is the output file
             # ONLY Heatmap
             "cmap": , # string; colors of heatmap (gray)
             # ONLY Bar graph
-            "order" : [], # array of str; order for the legend and bar
+            "order" : [], # array of str; order for the legend and bar. If
+                # you include a string with the value, 'mt_lg_placeholder' will
+                # include a white space in the given position in the legend
         }
     ]
 }

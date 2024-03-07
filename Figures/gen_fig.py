@@ -214,6 +214,13 @@ def graph_format(ax, info):
             h, l = ax.get_legend_handles_labels()
             legends_elements = []
             for ii in info['order']: 
+                # Identify if there is a fig_placeholder
+                if ii == 'mt_lg_placeholder': 
+                    legends_elements.append(
+                        mpatches.Patch(facecolor='white', edgecolor='white')
+                    )
+                    continue
+
                 if ii not in i['elems']: continue # Not print this element
                 if ii not in l: continue # This legend is not in our graph
                 legends_elements.append(h[l.index(ii)])
@@ -334,6 +341,12 @@ def fig_bar(ax, jgraph):
         Return:
             positions of bars, and width of bars
         '''
+        lg_placeholder = None
+        if 'mt_lg_placeholder' in jgraph['order']: 
+            # Remove legend placeholder
+            lg_placeholder = jgraph['order'].index('mt_lg_placeholder')
+            jgraph['order'].remove('mt_lg_placeholder')
+
         order = jgraph['order'] if 'order' in jgraph else set(v)
         pos = []
 
@@ -358,6 +371,10 @@ def fig_bar(ax, jgraph):
         # Related label and position
         loc = {}
         for i, j in zip(order, sorted(pos)): loc[i] = j
+
+        # Set again lg_placeholder
+        if lg_placeholder is not None:
+            jgraph['order'][lg_placeholder] = 'mt_lg_placeholder'
 
         return loc, size
     # Get the data

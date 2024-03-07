@@ -24,3 +24,4 @@ and install all the dependencies with `pip install -r requirements.txt`
 ## TODO
 
 * Define an official way to communicate `get_info.py` and the `parser.py`.
+* Extend the key mt_lg_placeholder so it can be multiples placeholders.
