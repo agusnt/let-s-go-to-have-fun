@@ -17,6 +17,7 @@ First parameter is the `json` file, second parameter is the output file
     "columns": , # interger; number of columns
     "figsize": , # string; size of the figure (e.g. "10,10")
     "args": , # dictionary; key - dictionary to call maptlotlib.rc function
+    "splt_args": , #dictionary; key - dictionary for fig.subplot arguments
     "graphs": [  # array; the definition of each figure
         {
             "dx": , # integer; position of the figure (row)

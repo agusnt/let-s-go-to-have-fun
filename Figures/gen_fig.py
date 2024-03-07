@@ -14,6 +14,7 @@ from pprint import pprint as ppt
 import matplotlib.patches as mpatches
 
 import matplotlib
+import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import seaborn as sns
@@ -127,9 +128,9 @@ def annotate(ax, v, x, y, xd, yd, arg):
 ###############################################################################
 # Graph Plot functions
 ###############################################################################
-def set_fig(rows=1, columns=1, size=None):
-    if size: return plt.subplots(nrows=rows, ncols=columns, figsize=size)
-    else: return plt.subplots(rows, columns)
+def set_fig(info = {}, rows=1, columns=1, size=None):
+    if size: return plt.subplots(nrows=rows, ncols=columns, figsize=size, **info)
+    else: return plt.subplots(rows, columns, **args)
 
 def get_ax(dx, dy, axs):
     '''
@@ -440,7 +441,10 @@ if __name__ == '__main__':
     if 'args' in jgraph: 
         for i in jgraph['args']: matplotlib.rc(i, **jgraph['args'][i])
     # Create subplot
-    fig, axs = set_fig(rows=rows, columns=columns, size=figsize)
+    if 'splt_args' in jgraph:
+        fig, axs = set_fig(jgraph['splt_args'], rows=rows, columns=columns, size=figsize)
+    else:
+        fig, axs = set_fig(rows=rows, columns=columns, size=figsize)
 
     # Iterate over all do graphs
     for i in jgraph['graphs']:
@@ -458,6 +462,7 @@ if __name__ == '__main__':
         graph_format(ax, i)
 
     graph_format(fig, jgraph)
+
     # Save fig as pdf
     plt.tight_layout()
     fig.savefig(sys.argv[2], bbox_inches='tight')
