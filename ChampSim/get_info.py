@@ -483,6 +483,10 @@ def db(dic, trace, info, workload):
             bar, _ = speedup(dic, base, name, {}, foo, i, ii)
             try_catch_insert_dic(element, 'speedup', bar)
 
+            if info['multicore']: 
+                data.append(copy.deepcopy(element))
+                continue # TODO: Implement metrics for multicore
+
             # Events of cache
             events = {'DEMAND': ['LOAD', 'RFO', 'WRITE'], 'LOAD': ['LOAD'], 
                       'PREFETCH': ['PREFETCH'], 'TRANSLATION': ['TRANSLATION'],
