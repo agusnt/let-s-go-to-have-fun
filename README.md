@@ -8,8 +8,8 @@ So breaking stuff is expected.
 
 ## Folder
 
-* *db*: MongoDB docker files and README
-* *slurm*: Scripts to submit jobs to slurm
+* *db*: MongoDB docker files and README.
+* *slurm*: Scripts to submit jobs to slurm.
 * *ChampSim*: ChampSim scripts.
 * *Figures*: Scripts to generate figures.
 
@@ -24,4 +24,5 @@ and install all the dependencies with `pip install -r requirements.txt`
 ## TODO
 
 * Define an official way to communicate `get_info.py` and the `parser.py`.
-* Extend the key mt_lg_placeholder so it can be multiples placeholders.
+* Extend the key mt_lg_placeholder, so it can be multiples placeholders.
+* Fix populate database with multicore, right now only can get the speedup
