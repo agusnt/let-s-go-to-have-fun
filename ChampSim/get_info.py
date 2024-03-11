@@ -543,10 +543,10 @@ def db(dic, trace, info, workload):
                     if 'ENERGY' not in element: element['ENERGY'] = {}
                     if 'REL_ENERGY' not in element: element['REL_ENERGY'] = {}
                     # Get relative energy
-                    rel_energy(dic, info['base_energy'], name, {}, foo, i, ii, levels)
+                    bar, _ = rel_energy(dic, info['base_energy'], name, {}, foo, i, ii, levels)
                     try_catch_insert_dic(element['REL_ENERGY'], j, bar)
                     # Get energy numbers
-                    energy(dic, name, {}, foo, i, ii, levels)
+                    bar, _ = energy(dic, name, {}, foo, i, ii, levels)
                     try_catch_insert_dic(element['ENERGY'], j, bar)
 
             # Raw data
