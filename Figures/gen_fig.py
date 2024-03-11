@@ -374,7 +374,7 @@ def fig_bar(ax, jgraph):
 
         # Set again lg_placeholder
         if lg_placeholder is not None:
-            jgraph['order'][lg_placeholder] = 'mt_lg_placeholder'
+            jgraph['order'].insert(lg_placeholder, 'mt_lg_placeholder')
 
         return loc, size
     # Get the data
