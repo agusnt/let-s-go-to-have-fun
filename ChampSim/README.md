@@ -99,6 +99,9 @@ The JSON db has to have the following information
     "db": "#database name",
     "collection": "#collection name",
     "base": "# base for speedup",
-    "base_llc": "# base for memory intensive (LLC MPKI > 1), optional"
+    "base_llc": "# base for memory intensive (LLC MPKI > 1); optional",
+    "multicore": # bool; set to true if you whn to populate with multicore simulations,
+    "base_energy": # base for energy, only work if using used with energy; optional
+    "energy": # path to the energy file (example in config_json/energy.json); optional
 }
 ```

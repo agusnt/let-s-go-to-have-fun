@@ -419,7 +419,8 @@ def rel_energy(dic, base, name, lines, end_values, dx_1, dx_2, levels, base_llc=
         total = do_energy(dic, dx_2, dx_1, levels)
            
         # total = (total * 10**-9) # Total Energy (Julios)
-        aux = total / total_base # Total Energy (miliJulios)
+        if total_base == 0: aux = 1
+        else: aux = total / total_base # Total Energy (miliJulios)
         values_to_string(end_values, lines, aux, name, dx_2)
     return lines, end_values
 
@@ -483,7 +484,7 @@ def db(dic, trace, info, workload):
             bar, _ = speedup(dic, base, name, {}, foo, i, ii)
             try_catch_insert_dic(element, 'speedup', bar)
 
-            if info['multicore']: 
+            if 'multicore' in info and info['multicore']: 
                 data.append(copy.deepcopy(element))
                 continue # TODO: Implement metrics for multicore
 
@@ -529,6 +530,24 @@ def db(dic, trace, info, workload):
             # ROB
             bar, _ = rob_branch(dic, name, {}, foo, i, ii)
             try_catch_insert_dic(element[key], 'ROB', bar)
+            # Energy numbers
+            if 'energy' in info:
+                # File with energy data
+                global ENERGY_FILE
+                ENERGY_FILE = info['energy']
+
+                elevel ={'L1D': ['L1D'], 'L2C': ['L2C'], 'LLC': ['LLC'], 
+                          'DRAM': ['DRAM'], 'ALL': ['L1D', 'L2C', 'LLC', 'DRAM']}
+                for j in elevel:
+                    levels = elevel[j]
+                    if 'ENERGY' not in element: element['ENERGY'] = {}
+                    if 'REL_ENERGY' not in element: element['REL_ENERGY'] = {}
+                    # Get relative energy
+                    rel_energy(dic, info['base_energy'], name, {}, foo, i, ii, levels)
+                    try_catch_insert_dic(element['REL_ENERGY'], j, bar)
+                    # Get energy numbers
+                    energy(dic, name, {}, foo, i, ii, levels)
+                    try_catch_insert_dic(element['ENERGY'], j, bar)
 
             # Raw data
             element['raw'] = dic[ii][i][0]
