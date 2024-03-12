@@ -31,7 +31,7 @@ This directory contains a bunch of scripts that are the most used
 }
 ```
 
-### speedup_bar_geomean.py
+### speedup_geomean.py
 
 ```python
 '''
@@ -45,6 +45,22 @@ Parameters:
 @Author: Navarro Torres, Agustin
 '''
 ```
+### mpki.py
+
+```python
+'''
+Generate graph and data with the MPKI in all levels
+
+Parameters:
+    1 : database file configuration
+    2 : graph file configuration
+    3 : google sheet configuration
+
+@Author: Navarro Torres, Agustin
+'''
+```
+
+### Json files
 
 #### DB file configuration
 

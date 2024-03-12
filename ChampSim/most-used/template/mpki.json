@@ -1,0 +1,74 @@
+{
+    "rows": 3,
+    "columns": 1,
+    "figsize": "7,4",
+    "splt_args": {"gridspec_kw": { "hspace": 0.3 } },
+    "graphs": [ 
+        {
+            "dx": 0,
+            "dy": 0,
+            "type": "bar",
+            "data": "data_L1D.dat",
+            "args": {
+                "zorder": 3
+            },
+            "axis": {
+                "x": {
+                },
+                "y": {
+                    "grid": true,
+                    "subgrid": true,
+                    "label": "L1D MPKI"
+                }
+            },
+            "legend": [
+                {
+                    "elems": [
+                    ],
+                    "args": {
+                        "edgecolor": "black",
+                        "fancybox": true,
+                        "loc": [0, 1.05],
+                        "ncol": 4
+                    }
+                }
+            ]
+        },
+        {
+            "dx": 0,
+            "dy": 1,
+            "type": "bar",
+            "data": "data_L2C.dat",
+            "args": {
+                "zorder": 3
+            },
+            "axis": {
+                "x": {
+                },
+                "y": {
+                    "grid": true,
+                    "subgrid": true,
+                    "label": "L2C MPKI"
+                }
+            }
+        },
+        {
+            "dx": 0,
+            "dy": 2,
+            "type": "bar",
+            "data": "data_LLC.dat",
+            "args": {
+                "zorder": 3
+            },
+            "axis": {
+                "x": {
+                },
+                "y": {
+                    "grid": true,
+                    "subgrid": true,
+                    "label": "LLC MPKI"
+                }
+            }
+        }
+    ]
+}
