@@ -247,7 +247,7 @@ if __name__ == '__main__':
     # Generate the data file
     print("Gen fig")
     config = json.load(open(sys.argv[2]))
-    for i in [(memIntG, 'mem_mem_int.pdf'), (allG, 'mem_all.pdf')]:
+    for i in [(memIntG, 'mpki_mem_int.pdf'), (allG, 'mpki_all.pdf')]:
         y, x, lg = gen_dat_for_graph(i[0], config)
         gen_graph(config, y, x, lg, i[1])
     

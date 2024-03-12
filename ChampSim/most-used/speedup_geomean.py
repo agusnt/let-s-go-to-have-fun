@@ -128,7 +128,7 @@ def gen_dat_for_graph(data, info):
     json.dump(dat, open('data.dat', 'w+'))
     return (min_y, max_y), axis_x, lg
 
-def gen_graph(info, y, x, lg):
+def gen_graph(info, y, x, lg, outf):
     '''
     Generate data file for the graph
 
@@ -137,6 +137,7 @@ def gen_graph(info, y, x, lg):
         x    : xticks for the graph
         x    : (min, max) values for the Y-axis
         lg   : values to write in the legend
+        outf : output figure name
     '''
     factor = 10 ** 2
     template = json.load(open('{}/template/speedup.json'.format(__dir_script)))
@@ -165,8 +166,7 @@ def gen_graph(info, y, x, lg):
     template['graphs'][0]['legend'][0]['elems'] = lg
 
     json.dump(template, open('tmp.json', 'w+'))
-    subprocess.run(['{}/../../Figures/gen_fig.py'.format(__dir_script), 'tmp.json', 'speedup.pdf'])
-
+    subprocess.run(['{}/../../Figures/gen_fig.py'.format(__dir_script), 'tmp.json', outf])
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
@@ -203,7 +203,7 @@ if __name__ == '__main__':
         data += [bar]
 
         # Write the csv
-        with open('{}.csv'.format(workload), 'w') as f:
+        with open('speedup_{}.csv'.format(workload), 'w') as f:
             csvWriter = csv.writer(f)
             csvWriter.writerow(header)
             csvWriter.writerows(data)
@@ -212,14 +212,16 @@ if __name__ == '__main__':
         if gs:
             print("Updating google sheet: {}".format(workload))
             subprocess.run(['{}/../../utils/google_sheet_update.py'.format(__dir_script), 
-                            gs['name'], '{}.csv'.format(workload), 'speedup'])
+                            gs['name'], 'speedup_{}.csv'.format(workload)])
 
 
     # Generate the data file
     print("Gen fig")
+
     config = json.load(open(sys.argv[2]))
-    y, x, lg = gen_dat_for_graph(memIntG, config)
-    gen_graph(config, y, x, lg)
+    for i in [(memIntG, 'speedup_mem_int.pdf'), (allG, 'speedup_all.pdf')]:
+        y, x, lg = gen_dat_for_graph(i[0], config)
+        gen_graph(config, y, x, lg, i[1])
     
     # Remove temporal files
     print("Deleting temporal files")
