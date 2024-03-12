@@ -208,12 +208,12 @@ if __name__ == '__main__':
     memIntG = {}
     for workload, all, memInt, toCSV in get_from_db(json.load(open(sys.argv[1]))):
         print("Getting data for: {}".format(workload))
-        header = ['Benchmark', 'Is_Mem_Int']
-        data = []
         allG[workload] = copy.deepcopy(all)
         memIntG[workload] = copy.deepcopy(memInt)
 
         for level in levels:
+            header = ['Benchmark', 'Is_Mem_Int']
+            data = []
             # Generate header and data for the csv
             for idx, i in enumerate(sorted(toCSV)): 
                 foo = [i]
