@@ -486,5 +486,5 @@ if __name__ == '__main__':
     graph_format(fig, jgraph)
 
     # Save fig as pdf
-    plt.tight_layout()
+    # plt.tight_layout()
     fig.savefig(sys.argv[2], bbox_inches='tight')
