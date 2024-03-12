@@ -12,6 +12,7 @@ So breaking stuff is expected.
 * *slurm*: Scripts to submit jobs to slurm.
 * *ChampSim*: ChampSim scripts.
 * *Figures*: Scripts to generate figures.
+* *utils*: Script that are useful.
 
 ## Requirements
 

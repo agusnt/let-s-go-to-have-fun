@@ -1,6 +1,14 @@
-# ChampSim-Python
+# ChampSim
 
-A bunch of _python3_ scripts to parse ChampSim output
+A bunch of for ChampSim
+
+## Folders
+
+* `config_json`: json files with different configurations.
+* `lib`: common script files.
+* `mixes`: generate mixes for multicore simulations.
+* `no_db`: scripts that does not use the db.
+* `utils`: a bunch of useful scripts.
 
 ## Scripts
 

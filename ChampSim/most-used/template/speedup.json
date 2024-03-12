@@ -1,0 +1,38 @@
+{
+    "rows": 1,
+    "columns": 1,
+    "figsize": "7,3",
+    "graphs": [ 
+        {
+            "dx": 0,
+            "dy": 0,
+            "type": "bar",
+            "data": "data.dat",
+            "hline": {"y": 1, "lw": 2.5, "color": "black"},
+            "args": {
+                "zorder": 3
+            },
+            "axis": {
+                "x": {
+                },
+                "y": {
+                    "grid": true,
+                    "subgrid": true,
+                    "label": "Speedup"
+                }
+            },
+            "legend": [
+                {
+                    "elems": [
+                    ],
+                    "args": {
+                        "edgecolor": "black",
+                        "fancybox": true,
+                        "loc": [0, 1.05],
+                        "ncol": 4
+                    }
+                }
+            ]
+        }
+    ]
+}

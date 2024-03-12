@@ -32,7 +32,7 @@ gc = gs.service_account() # Read credentials
 sh = gc.open(sys.argv[1]) # Open correct sheet
 
 try: sh.del_worksheet(sh.worksheet(sheet_name)) # try to delete worksheet if already exists
-except: pass 
+except: pass
 
 ws = sh.add_worksheet(sheet_name, rows=df.shape[0], cols=df.shape[1]) # create new workseeth
 
