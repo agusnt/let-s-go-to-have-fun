@@ -194,6 +194,10 @@ def gen_graph(info, y, x, lg, outf):
     # Legend
     template['graphs'][0]['legend'][0]['elems'] = lg
 
+    # Number of columns by legend
+    if 'cols' in info:
+        template['graphs'][0]['legend'][0]['args']['ncol'] = info['cols']
+
     json.dump(template, open('tmp.json', 'w+'))
     subprocess.run(['{}/../../Figures/gen_fig.py'.format(__dir_script), 'tmp.json', outf])
 

@@ -81,6 +81,7 @@ Parameters:
         # Dictionary to tranlsate the binary name to tag in the graph
         "key": "value"
     },
+    "cols": "#int, optional; number of columns in the legend",
     "order": [""] # Order field of the gen_fig.py script
 }
 ```
