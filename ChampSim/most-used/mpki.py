@@ -115,9 +115,9 @@ def gen_dat_for_graph(data, info):
     lg = []
     
     # Generate data
-    for i in data:
+    for i in sorted(data):
         axis_x.append(i)
-        for ii in data[i]:
+        for ii in sorted(data[i]):
             if ii not in translate: continue
             for iii in data[i][ii]:
                 name = translate[ii]
