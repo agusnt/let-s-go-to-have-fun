@@ -272,7 +272,7 @@ def fig_plot(ax, jgraph):
         jgraph : json with all the information for this graph
     '''
     # Get the data
-    x, y, v, c, m, _, l = data_to_array(jgraph['data'])
+    x, y, v, c, m, _, ll = data_to_array(jgraph['data'])
     
     # X and Y must be equal
     assert len(x) == len(y), "X and Y has different size"
@@ -284,10 +284,23 @@ def fig_plot(ax, jgraph):
 
     #Args
     args = jgraph['args'] if 'args' in jgraph else {}
+    
+    # Split every line to print into different lines
+    l = {}
+    for i, j, k, n, o in zip(x, y, c, m, v):
+        if o not in l: l[o] = {'x': [], 'y': [], 'c': [], 'm': [], 'v': []}
+        l[o]['x'].append(i)
+        l[o]['y'].append(j)
+        l[o]['c'].append(k)
+        l[o]['m'].append(n)
+        l[o]['v'].append(o)
 
-    # Plot the figure with labels
-    if all(l): ax.plot(x, y, c=c[0], marker=m[0], **args, label=v)
-    else: ax.plot(x, y, c=c[0], marker=m[0], **args) # Wihbout labels
+    # Plot it
+    for i in l:
+        if all(ll):
+            ax.plot(l[i]['x'], l[i]['y'], c=l[i]['c'][0], marker=l[i]['m'][0], **args, label=l[i]['v'])
+        else:
+            ax.plot(l[i]['x'], l[i]['y'], c=l[i]['c'][0], marker=l[i]['m'][0], **args)
 
 def fig_scatter(ax, jgraph):
     '''
