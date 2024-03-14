@@ -298,7 +298,7 @@ def fig_plot(ax, jgraph):
     # Plot it
     for i in l:
         if all(ll):
-            ax.plot(l[i]['x'], l[i]['y'], c=l[i]['c'][0], marker=l[i]['m'][0], **args, label=l[i]['v'])
+            ax.plot(l[i]['x'], l[i]['y'], c=l[i]['c'][0], marker=l[i]['m'][0], **args, label=i)
         else:
             ax.plot(l[i]['x'], l[i]['y'], c=l[i]['c'][0], marker=l[i]['m'][0], **args)
 
