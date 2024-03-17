@@ -7,3 +7,4 @@ seaborn
 xlsxwriter
 gspread
 pymongo
+gspread_dataframe

@@ -228,8 +228,8 @@ if __name__ == '__main__':
                 data += [foo]
 
             # Adding the geomean
-            foo = ['GEOMEAN_ALL', False]
-            bar = ['GEOMEAN', True]
+            foo = ['MEAN_ALL', False]
+            bar = ['MEAN', True]
             for i in sorted(all):
                 foo += [all[i][level]]
                 bar += [memInt[i][level]]

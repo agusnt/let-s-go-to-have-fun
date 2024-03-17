@@ -60,6 +60,22 @@ Parameters:
 '''
 ```
 
+### Accuracy
+
+
+```python
+'''
+Generate graph and data with the Accuracy in given level
+
+Parameters:
+    1 : database file configuration
+    2 : graph file configuration (must have a 'level' field with the level: L1D, L2C, LLC)
+    3 : google sheet configuration
+
+@Author: Navarro Torres, Agustin
+'''
+```
+
 ### Json files
 
 #### DB file configuration

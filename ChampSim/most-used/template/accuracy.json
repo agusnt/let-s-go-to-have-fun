@@ -1,0 +1,39 @@
+{
+    "rows": 1,
+    "columns": 1,
+    "figsize": "7,3",
+    "graphs": [ 
+        {
+            "dx": 0,
+            "dy": 0,
+            "type": "bar",
+            "data": "data.dat",
+            "args": {
+                "zorder": 3
+            },
+            "axis": {
+                "x": {
+                },
+                "y": {
+                    "max": 100,
+                    "min": 0,
+                    "grid": true,
+                    "subgrid": true,
+                    "label": "Accuracy"
+                }
+            },
+            "legend": [
+                {
+                    "elems": [
+                    ],
+                    "args": {
+                        "edgecolor": "black",
+                        "fancybox": true,
+                        "loc": [0, 1.05],
+                        "ncol": 4
+                    }
+                }
+            ]
+        }
+    ]
+}
