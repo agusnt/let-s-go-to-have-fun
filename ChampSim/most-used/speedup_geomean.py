@@ -93,8 +93,8 @@ def gen_dat_for_graph(data, info):
     dx = 0
     all = {}
 
-    min_y = sys.maxsize
-    max_y = 0
+    min_y = {}
+    max_y = {}
     axis_x = []
     
     lg = []
@@ -108,8 +108,10 @@ def gen_dat_for_graph(data, info):
             name = translate[ii]
 
             # Set min and max values
-            if data[i][ii] < min_y: min_y = data[i][ii]
-            if data[i][ii] > max_y: max_y = data[i][ii]
+            if ii not in min_y: min_y[ii] = data[i][ii]
+            elif data[i][ii] < min_y[ii]: min_y[ii] = data[i][ii]
+            if ii not in max_y: max_y[ii] = data[i][ii]
+            elif data[i][ii] > max_y[ii]: max_y[ii] = data[i][ii]
 
             dat.append(append_data(dx, data[i][ii], name, colors[name]['color'], 
                                    colors[name]['edge_color'], colors[name]['mark']))
@@ -134,18 +136,25 @@ def gen_graph(info, y, x, lg, outf):
 
     Parameter:
         info : dictionary with the information for the json
+        y    : (min, max) values for the Y-axis
         x    : xticks for the graph
-        x    : (min, max) values for the Y-axis
         lg   : values to write in the legend
         outf : output figure name
     '''
     factor = 10 ** 2
     template = json.load(open('{}/template/speedup.json'.format(__dir_script)))
     # Get axis X values (with 5 steps)
-    max  = math.ceil(y[1] * factor) / factor
-    min  = math.floor(y[1] * factor) / factor
+    max = 0
+    min = sys.maxsize
+    for i in y[0]:
+        if info['translate'][i] not in info['order']: continue
+        if y[0][i] > max: max = y[0][i]
+        if y[1][i] < min: min = y[1][i]
+    max  = math.ceil(max * factor) / factor
+    min  = math.floor(min * factor) / factor
     step = 0.05
-    if min > 0.9: min = 0.9
+    if min > 0.95: min = 0.95
+    if max < 1.05: max = 1.05
     xticks = [round(i, 2) for i in np.arange(min, max+step/2, step)]
     mxticks = [round(i, 2) for i in np.arange(min, max+step/4, step/2)]
     if xticks[-1] > max: max = xticks[-1]
