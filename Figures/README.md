@@ -44,6 +44,7 @@ First parameter is the `json` file, second parameter is the output file
                     "subgrid": , # bool; enable subgrid
                     "max": , # float; upper limit of the axis
                     "min": , # float; lower limit of the axis
+                    "margin", #float, margin of the graph
                     "args_labels": {
                         # dict; Arguments for the specific maptlotlib function (e.g: rotation)
                     },

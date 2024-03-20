@@ -192,6 +192,10 @@ def set_axis(ax, axis, info):
         if axis == 'x': ax.grid(axis='x', which='minor', linestyle='--')
         elif axis == 'y': ax.grid(axis='y', which='minor', linestyle='--')
 
+    if 'margin' in info: # Margin
+        if axis == 'x': ax.margins(x=info['margin'])
+        elif axis == 'y': ax.margins(y=info['margin'])
+
 def graph_format(ax, info):
     '''
     Set specific design for the graph
