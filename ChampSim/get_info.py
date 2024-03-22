@@ -93,7 +93,7 @@ from pprint import pprint as ppt
 
 
 # Other constants
-LLC_MEM_INT = 1
+MEM_INT = 1
 
 # Min prefetch (Minimun of prefetch to calculate accuracy)
 MIN_PREF = 0
@@ -109,17 +109,18 @@ def do_pki(first, second):
     if second == 0: return 0
     return first / (second/1000)
 
-def do_mem_intensive(miss, instr): return do_pki(miss, instr) > LLC_MEM_INT 
+def do_mem_intensive(miss, instr): return do_pki(miss, instr) > MEM_INT 
 
-def do_is_mem_intensive(base_llc):
+def do_is_mem_intensive(base_llc, level='LLC'):
     '''
     Return true if the trace is intensive
     
     Parameter:
         base_llc : data to calculate memory intensive benchmark
+        level    : Which level we want to be memory intensive
     '''
     if (len(base_llc) > 1): return True
-    miss = base_llc[0]["LLC"]["LOAD"]["MISS"]
+    miss = base_llc[0][level]["LOAD"]["MISS"]
     instr = base_llc[0]["instructions"]
     return do_mem_intensive(miss, instr)
 
@@ -554,9 +555,14 @@ def db(dic, trace, info, workload):
 
             # We want to know if this is memory intensive or not
             if 'base_llc' in info:
+                # LLC mem int
                 if do_is_mem_intensive(dic[info['base_llc']][i]):
-                    element['is_mem_int'] = True
-                else: element['is_mem_int'] = False
+                    element['llc_is_mem_int'] = True
+                else: element['llc_is_mem_int'] = False
+                # STLB mem int
+                if do_is_mem_intensive(dic[info['base_llc']][i], level='STLB'):
+                    element['stlb_is_mem_int'] = True
+                else: element['stlb_is_mem_int'] = False
             # Save the data to insert into the database later
             data.append(copy.deepcopy(element))
 
