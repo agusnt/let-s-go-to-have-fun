@@ -89,8 +89,8 @@ def gen_dat_for_graph(data, info):
     dx = 0
     all = {}
 
-    min_y = {}
-    max_y = {}
+    min_y = sys.maxsize 
+    max_y = 0
     axis_x = []
     
     lg = []
@@ -104,10 +104,8 @@ def gen_dat_for_graph(data, info):
             name = translate[ii]
 
             # Set min and max values
-            if ii not in min_y: min_y[ii] = data[i][ii]
-            elif data[i][ii] < min_y[ii]: min_y[ii] = data[i][ii]
-            if ii not in max_y: max_y[ii] = data[i][ii]
-            elif data[i][ii] > max_y[ii]: max_y[ii] = data[i][ii]
+            if data[i][ii] < min_y: min_y = data[i][ii]
+            if data[i][ii] > max_y: max_y = data[i][ii]
 
             dat.append(append_data(dx, data[i][ii], name, colors[name]['color'], 
                                    colors[name]['edge_color'], colors[name]['mark']))
@@ -140,14 +138,8 @@ def gen_graph(info, y, x, lg, outf):
     factor = 10 ** 2
     template = json.load(open('{}/template/speedup.json'.format(__dir_script)))
     # Get axis X values (with 5 steps)
-    max = 0
-    min = sys.maxsize
-    for i in y[0]:
-        if info['translate'][i] not in info['order']: continue
-        if y[0][i] > max: max = y[0][i]
-        if y[1][i] < min: min = y[1][i]
-    max  = math.ceil(max * factor) / factor
-    min  = math.floor(min * factor) / factor
+    max  = math.ceil(y[1] * factor) / factor
+    min  = math.floor(y[0] * factor) / factor
     step = 0.05
     if min > 0.95: min = 0.95
     if max < 1.05: max = 1.05
@@ -204,10 +196,8 @@ if __name__ == '__main__':
             data += [foo]
 
         # Adding the geomean
-        foo = []
-        bar = ['GEOMEAN', True]
-        for i in sorted(all): foo += [all[i]]
-        data += [foo]
+        bar = ['GEOMEAN']
+        for i in sorted(all): bar += [all[i]]
         data += [bar]
 
         # Write the csv

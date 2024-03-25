@@ -44,11 +44,14 @@ def get_from_db(db):
     ret = collection.aggregate([{'$group': {'_id': {'workload': '$workload'}}}])
     workloads = [i['_id']['workload'] for i in ret]
 
+    filter = 'llc_mem_int'
+    if 'filter' in db: filter = db['filter']
+
     for i in workloads:
         all = {}
         memInt = {}
         bench = {}
-        for ii in collection.find({'workload': i}, {'is_mem_int', 'name', 
+        for ii in collection.find({'workload': i}, {filter, 'name', 
                                                     'L1D.MPKI.DEMAND', 
                                                     'L2C.MPKI.DEMAND',
                                                     'LLC.MPKI.DEMAND', 'binary'}):
@@ -62,7 +65,7 @@ def get_from_db(db):
 
             # Add the data
             bench[ii['name']][ii['binary']] = {
-                'is_mem_int': ii['is_mem_int'],
+                filter: ii[filter],
                 'L1D': ii['L1D']['MPKI']['DEMAND'],
                 'L2C': ii['L2C']['MPKI']['DEMAND'],
                 'LLC': ii['LLC']['MPKI']['DEMAND'],
@@ -70,7 +73,7 @@ def get_from_db(db):
             all[bin]['L1D'].append(ii['L1D']['MPKI']['DEMAND'])
             all[bin]['L2C'].append(ii['L2C']['MPKI']['DEMAND'])
             all[bin]['LLC'].append(ii['LLC']['MPKI']['DEMAND'])
-            if ii['is_mem_int']: 
+            if ii[filter]: 
                 memInt[bin]['L1D'].append(ii['L1D']['MPKI']['DEMAND'])
                 memInt[bin]['L2C'].append(ii['L2C']['MPKI']['DEMAND'])
                 memInt[bin]['LLC'].append(ii['LLC']['MPKI']['DEMAND'])
@@ -223,7 +226,7 @@ if __name__ == '__main__':
                 foo = [i]
                 for ii in sorted(toCSV[i]):
                     if idx == 0: header += [ii]
-                    if len(foo) < 2: foo += [toCSV[i][ii]['is_mem_int']]
+                    if len(foo) < 2: foo += [toCSV[i][ii][filter]]
                     foo += [toCSV[i][ii][level]]
                 data += [foo]
 

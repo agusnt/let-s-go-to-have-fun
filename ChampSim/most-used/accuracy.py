@@ -58,7 +58,10 @@ def get_from_db(db, info):
     client = MongoClient(db['connect'])
     collection = client[db['db']][db['collection']]
 
-    projection = {'is_mem_int', 'name', 'binary'}
+    filter = 'llc_mem_int'
+    if 'filter' in db: filter = db['filter']
+
+    projection = {filter, 'name', 'binary'}
     projection.add('{}.PF.ACCURACY'.format(info['level']))
     projection.add('{}.PF.ACCURACY_LATE'.format(info['level']))
 
@@ -84,11 +87,11 @@ def get_from_db(db, info):
             # Add the data
             fields = [ii['{}'.format(info['level'])]['PF']['ACCURACY'], 
                       ii['{}'.format(info['level'])]['PF']['ACCURACY_LATE']]
-            bench[ii['name']][ii['binary']] = [ii['is_mem_int']] + fields
+            bench[ii['name']][ii['binary']] = [ii[filter]] + fields
 
             all[bin].append(fields[0])
             all_late[bin].append(fields[1])
-            if ii['is_mem_int']: 
+            if ii[filter]: 
                 memInt[bin].append(fields[0])
                 memInt_late[bin].append(fields[1])
 
